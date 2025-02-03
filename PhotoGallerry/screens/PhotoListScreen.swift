@@ -8,24 +8,61 @@
 import SwiftUI
 
 struct PhotoListScreen: View {
+    
+    @State private var filterSheetIsPresented: Bool = false
+    @State private var photoDialogVisibility = false
+    
     var body: some View {
         GeometryReader{ geometry in
-            var width = geometry.size.width * 0.7
-            ScrollView{
-                LazyVStack{
-                    Image("icardi")
-                        .resizable()
-                        .frame(width: width,height: 250)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .foregroundStyle(.tint)
+            let width = geometry.size.width * 0.7
+            
+            ZStack{
+                ScrollView{
+                    HStack {
+                        SearchBar(){ text in
+                            // Search
+                        }
+                        Image("ic_filter")
+                            .resizable()
+                            .frame(width: 50,height: 50)
+                            .onTapGesture {
+                                filterSheetIsPresented.toggle()
+                            }
+        
+                    }.padding([.leading, .trailing], 20)
+                    
+                    LazyVStack{
+                        Image("icardi")
+                            .resizable()
+                            .frame(width: width,height: 250)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .foregroundStyle(.tint)
+                            .onLongPressGesture {
+                                photoDialogVisibility = true
+                            }
+                    }
+                }
+                
+                if photoDialogVisibility {
+                    PhotoDialog(
+                        dismissClick: {
+                            photoDialogVisibility = false
+                        },
+                        openWebPageClick: {
+                            
+                        },
+                        shareClick: {
+                            
+                        },
+                        downloadClick: {
+                            
+                        }
+                    )
                 }
             }
-            VStack {
-                
-
+            .background(Color("bg_color"))
+            .sheet(isPresented: $filterSheetIsPresented, content: { FilterSheet() })
             }
-        }
-        
     }
 }
 
