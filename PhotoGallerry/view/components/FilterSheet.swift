@@ -11,17 +11,12 @@ struct FilterSheet: View {
     var getResults: ([String:String?]) -> Void
     @Binding var filterHash: [String:String?]
     var filterSelect: (_ key:String, _ value:String?) -> Void
-    var reset: () -> Void = {  }
     
     var body: some View {
         
         VStack{
             HStack(alignment:.top){
                 Text("Filter Settings").font(.title)
-                Spacer()
-                Button("Reset"){
-                    reset()
-                }
             }.padding()
             
             ForEach(Filter.allCases, id: \.self){ filter in

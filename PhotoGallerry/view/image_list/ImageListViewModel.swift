@@ -40,8 +40,4 @@ class ImageListViewModel : ObservableObject {
     func setFilter(key:String,value:String?){
         filter[key] = value
     }
-    
-    func resetFilter(){
-        filter.removeAll()
-    }
 }

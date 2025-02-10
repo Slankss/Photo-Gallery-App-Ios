@@ -64,9 +64,6 @@ struct ImageListView: View {
                 filterHash: $imageListViewModel.filter,
                 filterSelect: { key, value in
                     imageListViewModel.setFilter(key: key, value: value)
-                },
-                reset: {
-                    imageListViewModel.resetFilter()
                 }
             )
         })
