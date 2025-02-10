@@ -29,6 +29,11 @@
 			path = PhotoGallerry;
 			sourceTree = "<group>";
 		};
+		687EED112D5A160800CDC7BE /* assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = assets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +50,7 @@
 		687EEB882D50153B00CDC7BE = {
 			isa = PBXGroup;
 			children = (
+				687EED112D5A160800CDC7BE /* assets */,
 				687EEB932D50153B00CDC7BE /* PhotoGallerry */,
 				687EEB922D50153B00CDC7BE /* Products */,
 			);
@@ -75,6 +81,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				687EEB932D50153B00CDC7BE /* PhotoGallerry */,
+				687EED112D5A160800CDC7BE /* assets */,
 			);
 			name = PhotoGallerry;
 			packageProductDependencies = (
