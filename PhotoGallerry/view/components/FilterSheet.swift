@@ -8,7 +8,10 @@ import SwiftUI
 
 struct FilterSheet: View {
     
-    @State private var isOrientationFilterExpanded = false
+    var getResults: ([String:String?]) -> Void
+    @Binding var filterHash: [String:String?]
+    var filterSelect: (_ key:String, _ value:String?) -> Void
+    var reset: () -> Void = {  }
     
     var body: some View {
         
@@ -17,18 +20,24 @@ struct FilterSheet: View {
                 Text("Filter Settings").font(.title)
                 Spacer()
                 Button("Reset"){
-                    
+                    reset()
                 }
             }.padding()
             
             ForEach(Filter.allCases, id: \.self){ filter in
-                FilterColumn(filter:filter)
+                FilterColumn(
+                    selectedValue: filterHash[filter.query] as? String,
+                    filter:filter,
+                    onSelect: { selectedValue in
+                        filterSelect(filter.query, selectedValue)
+                    }
+                )
             }
             
             Spacer()
             
             Button("Get Results"){
-                
+                getResults(filterHash)
             }
             .foregroundStyle(.white)
             .padding(10)
@@ -39,8 +48,4 @@ struct FilterSheet: View {
                                             
         }.frame(maxHeight:.infinity, alignment: .top)        
     }
-}
-
-#Preview {
-    FilterSheet()
 }

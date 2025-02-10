@@ -9,21 +9,24 @@ import SwiftUI
 struct FilterColumn: View {
     
     @State private var isOrientationFilterExpanded = false
-    @State private var selectedValue = ""
+    @State var selectedValue: String? = nil
     var filter: Filter
+    var onSelect: (String?) -> Void
     
     var body: some View {
         DisclosureGroup(filter.query.capitalized, isExpanded: $isOrientationFilterExpanded) {
             let columns = [GridItem(.adaptive(minimum: 102))]
             LazyVGrid(columns: columns,spacing: 10){
                 ForEach(filter.values, id:\.hashValue){ value in
-                    FilterBox(text: value, isSelected: value == selectedValue)
+                    RoundedBox(text: value, isSelected: value == selectedValue)
                         .onTapGesture{
                             if selectedValue == value {
-                                selectedValue = ""
+                                selectedValue = nil
+                                onSelect(selectedValue)
                                 return
                             }
                             selectedValue = value
+                            onSelect(selectedValue)
                         }
                 }
             }.padding(.top, 10)

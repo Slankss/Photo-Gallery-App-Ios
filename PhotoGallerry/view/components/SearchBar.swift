@@ -23,7 +23,7 @@ struct SearchBar: View {
                     .padding([.top, .bottom],10)
                     
             }
-            .background(Color("primary_color"))
+            .background(Color("color_primary"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .onTapGesture {
                 onClick(searchText)

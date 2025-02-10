@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-public struct FilterBox: View {
+public struct RoundedBox: View {
     
     var text: String
-    var isSelected: Bool
+    var isSelected: Bool = false
+    var color: Color = Color(.gray)
     
     public var body: some View {
         ZStack{
@@ -20,13 +21,14 @@ public struct FilterBox: View {
             }.padding(10)
         }
         .foregroundStyle(.white)
+        .frame(minWidth: 80)
         .frame(maxWidth: .infinity)
-        .background(isSelected ? .blue : .gray)
+        .background(isSelected ? .blue : color)
         .clipShape(RoundedRectangle(cornerRadius: 24))
 
     }
 }
 
 #Preview {
-    FilterBox(text:"vertical",isSelected: true)
+    RoundedBox(text:"vertical",isSelected: true)
 }
