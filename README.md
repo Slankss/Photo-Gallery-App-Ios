@@ -27,7 +27,7 @@ A simple and clean-coded photo gallery iOS application. This project is develope
 Below are some screenshots of the application, displayed in a column layout:
 
 <div align="center">
-  <img src="assets/app_ss1.png" alt="App Screenshot 1" style="display: block; margin-bottom: 10px; max-width: 100%;" />
-  <img src="assets/app_ss2.png" alt="App Screenshot 2" style="display: block; margin-bottom: 10px; max-width: 100%;" />
-  <img src="assets/app_ss3.png" alt="App Screenshot 3" style="display: block; margin-bottom: 10px; max-width: 100%;" />
+  <img src="assets/app_ss1.png" alt="App Screenshot 1" style="display: block; margin-bottom: 10px; max-width: 33%;" />
+  <img src="assets/app_ss2.png" alt="App Screenshot 2" style="display: block; margin-bottom: 10px; max-width: 33%;" />
+  <img src="assets/app_ss3.png" alt="App Screenshot 3" style="display: block; margin-bottom: 10px; max-width: 33%;" />
 </div>
