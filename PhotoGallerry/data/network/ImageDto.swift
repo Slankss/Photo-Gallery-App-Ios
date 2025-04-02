@@ -4,8 +4,8 @@
 //
 //  Created by Okan Kukul on 7.02.2025.
 //
-class ImageModel: Codable {
-    var id:Int?
+class ImageDto: Codable {
+    var id:Int
     var pageURL:String?
     var type:String?
     var tags:String?
@@ -28,7 +28,30 @@ class ImageModel: Codable {
     var user:String?
     var userImageURL:String?
     
-    init(id: Int? = nil, pageURL: String? = nil, type: String? = nil, tags: String? = nil, previewURL: String? = nil, previewWidth: Int? = nil, previewHeight: Int? = nil, webformatURL: String? = nil, webFormatWidth: Int? = nil, webFormatHeight: Int? = nil, largeImageURL: String? = nil, imageWidth: Int? = nil, imageHeight: Int? = nil, imageSize: Int? = nil, views: Int? = nil, downloads: Int? = nil, collections: Int? = nil, likes: Int? = nil, comments: Int? = nil, user_id: Int? = nil, user: String? = nil, userImageURL: String? = nil) {
+    init(
+        id: Int,
+        pageURL: String? = nil,
+        type: String? = nil,
+        tags: String? = nil,
+        previewURL: String? = nil,
+        previewWidth: Int? = nil,
+        previewHeight: Int? = nil,
+        webformatURL: String? = nil,
+        webFormatWidth: Int? = nil,
+        webFormatHeight: Int? = nil,
+        largeImageURL: String? = nil,
+        imageWidth: Int? = nil,
+        imageHeight: Int? = nil,
+        imageSize: Int? = nil,
+        views: Int? = nil,
+        downloads: Int? = nil,
+        collections: Int? = nil,
+        likes: Int? = nil,
+        comments: Int? = nil,
+        user_id: Int? = nil,
+        user: String? = nil,
+        userImageURL: String? = nil
+    ) {
         self.id = id
         self.pageURL = pageURL
         self.type = type

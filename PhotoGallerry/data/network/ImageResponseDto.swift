@@ -5,8 +5,8 @@
 //  Created by Okan Kukul on 7.02.2025.
 //
 
-class ImageResponse: Codable {
+class ImageResponseDto: Codable {
     var total:Int?
     var totalHits:Int?
-    var hits:[ImageModel]?
+    var hits:[ImageDto]?
 }

@@ -6,12 +6,12 @@
 //
 import Foundation
 
-class ImageDao {
+class ImageService {
     
     let BASE_URL = "https://pixabay.com/api/"
     let API_KEY = "48294149-9e5d9aec4e5a24e180366df48"
     
-    func getImages(page:Int = 1, per_page:Int = 3, filter:[String:String?]? = nil,query:String? = nil) async throws -> ImageResponse{
+    func getImages(page:Int = 1, per_page:Int = 3, filter:[String:String?]? = nil,query:String? = nil) async throws  -> ImageResponseDto{
         do {
         var components = URLComponents(string:BASE_URL)!
         components.queryItems = [
@@ -37,7 +37,7 @@ class ImageDao {
         }
         
         let (data, _) = try await URLSession.shared.data(from: url)
-        let result = try JSONDecoder().decode(ImageResponse.self, from: data)
+        let result = try JSONDecoder().decode(ImageResponseDto.self, from: data)
     
         return result
         } catch {

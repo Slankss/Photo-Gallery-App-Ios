@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		68174AB22D9D0D9B00DC1B06 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68174AB12D9D0D9B00DC1B06 /* CoreData.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		68174AB12D9D0D9B00DC1B06 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		687EEB912D50153B00CDC7BE /* PhotoGallerry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGallerry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -41,17 +46,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68174AB22D9D0D9B00DC1B06 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68174AB02D9D0D9B00DC1B06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68174AB12D9D0D9B00DC1B06 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		687EEB882D50153B00CDC7BE = {
 			isa = PBXGroup;
 			children = (
 				687EED112D5A160800CDC7BE /* assets */,
 				687EEB932D50153B00CDC7BE /* PhotoGallerry */,
+				68174AB02D9D0D9B00DC1B06 /* Frameworks */,
 				687EEB922D50153B00CDC7BE /* Products */,
 			);
 			sourceTree = "<group>";

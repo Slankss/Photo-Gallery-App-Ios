@@ -35,7 +35,7 @@ struct ImageListView: View {
                     ){
                         ForEach(imageListViewModel.images, id:\.self.id) { image in
                             ZStack{
-                                if let url = image.webformatURL {
+                                if let url = image.imageUrl {
                                     NavigationLink(destination:ImageDetailView(image:image)){
                                         ImageBox(url: url)
                                     }

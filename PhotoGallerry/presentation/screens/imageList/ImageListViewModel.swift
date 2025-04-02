@@ -8,16 +8,16 @@ import Foundation
 
 class ImageListViewModel : ObservableObject {
     
-    var imageDao: ImageDao
+    var imageDao: ImageService
     
-    @Published var images = [ImageModel]()
+    @Published var images = [ImageContent]()
     var currentPage: Int = 1
     let per_page = 50
     var totalHits:Int? = nil
     @Published var filter:[String:String?]=[:]
     
     init() {
-        imageDao = ImageDao()
+        imageDao = ImageService()
     }
         
     func getImages(query:String? = nil) {
@@ -27,7 +27,7 @@ class ImageListViewModel : ObservableObject {
                 totalHits = data.totalHits
                 DispatchQueue.main.async {
                     if let images = data.hits {
-                        self.images = images
+                        self.images = images.map{ $0.toImageContent()}
                     }
                 }
                 

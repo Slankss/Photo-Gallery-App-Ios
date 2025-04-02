@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ImageDetailView: View {
     
-    var image:ImageModel
-    var imageDetailViewModel = ImageDetailViewModel()
+    var image:ImageContent
+    @ObservedObject var imageDetailViewModel = ImageDetailViewModel()
     @State var tags:[String]? = nil
     @State var imageLoadedSucess = false
     @State var showMessage = false
@@ -29,7 +29,7 @@ struct ImageDetailView: View {
         GeometryReader { geometry in
             let height = geometry.size.height / 2.5
             VStack(alignment:.leading){
-                if let url = image.webformatURL {
+                if let url = image.imageUrl {
                     ImageBox(
                         url: url,
                         height: height,
@@ -43,7 +43,7 @@ struct ImageDetailView: View {
                     
                 HStack{
                     if imageLoadedSucess {
-                        if let userImageURL = image.userImageURL {
+                        if let userImageURL = image.userImageUrl {
                             AsyncImage(url:URL(string: userImageURL)){ phase in
                                 switch phase {
                                 case .empty:
@@ -74,18 +74,27 @@ struct ImageDetailView: View {
                         
                         Spacer()
                         
-                        if let pageUrl = image.pageURL {
+                        Image(systemName: imageDetailViewModel.isMark ? "bookmark.fill" : "bookmark" )
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundStyle(.black)
+                            .frame(width: 24,height: 36)
+                            .onTapGesture {
+                                imageDetailViewModel.setMarkImage(image: image)
+                            }
+                        
+                        if let pageUrl = image.pageUrl {
                             Image("ic_share")
                                 .resizable()
                                 .renderingMode(.template)
                                 .foregroundStyle(.black)
-                                .frame(width: 26,height: 26)
+                                .frame(width: 36,height: 36)
                                 .onTapGesture {
                                     shareImageUrl(textUrl: pageUrl)
                                 }
                         }
                         
-                        if let imageUrl = image.webformatURL {
+                        if let imageUrl = image.imageUrl {
                             Image("ic_download")
                                 .resizable()
                                 .renderingMode(.template)
@@ -135,7 +144,8 @@ struct ImageDetailView: View {
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity)
             .onAppear{
-                tags = imageDetailViewModel.convertTagsToList(tags:image.tags)
+                tags = image.tags
+                imageDetailViewModel.isFavorite(id: image.id)
             }
         }
         .overlay{
@@ -154,6 +164,6 @@ struct ImageDetailView: View {
 
 #Preview {
     ImageDetailView(
-        image:ImageModel(webformatURL:"url")
+        image:ImageContent(id:1,imageUrl:"url")
     )
 }
